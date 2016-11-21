@@ -1,7 +1,7 @@
 body{
 	font-family: 'Delius Unicase', cursive;
 	font-size: 18px;
-	background-color: #00BCD4;/*#0097A7;*/
+	background-color: #00BCD4;
 }
 header,
 main,
@@ -13,7 +13,9 @@ footer{
 p{
 	
 }
-span{
+span,
+input{
+	border: 0;
 	border-bottom: 1px solid #000;
 	padding: 0px 15px;
 }
