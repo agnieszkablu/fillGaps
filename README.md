@@ -1,5 +1,5 @@
-# fillGaps
-pSitePoint 'Introduction to JavaScript' course challenge
+#fillGaps
+SitePoint 'Introduction to JavaScript' course challenge
 
 ##Objectives
 
