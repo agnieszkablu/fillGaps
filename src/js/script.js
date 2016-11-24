@@ -15,21 +15,24 @@
 			return (Math.floor(Math.random() * numMax));
 		},
 		//function to iterate throught the nodelist
-		wordNodes = function (tempWord, arr, num) {
-			var item,
-				randNum = randomise(num),
-				splicedElem;
+		wordNodes = function (tempWord, arr) {
+			var i,
+				randNum;
+				//splicedElem;
 				//using for.. of to iterate over selected nodelist and replace words
-			for (item of tempWord) {
-					//remove class editable
-				item.classList.remove('editable');
+			for (i = 0; i < tempWord.length; i++) {
+					//remove class editable when user change from their own input to prefill
+				tempWord[i].classList.remove('editable');
+				//console.log(item);
+				randNum = randomise(arr.length);
 				if (arr.length > 1) {
 					//splicedElem = arr.splice(randNum, 1);
-					item.innerHTML = arr.splice(randNum, 1);
+					tempWord[i].innerHTML = arr.splice(randNum, 1);
+					console.log(arr.length);
 				} else if (arr.length === 1) {
-					item.innerHTML = arr.splice(0, 1);
+					tempWord[i].innerHTML = arr.splice(0, 1);
 				} else {
-					item.innerHTML = 'Runned out of words';
+					tempWord[i].innerHTML = 'Runned out of words';
 				}
 			}
 		},
@@ -37,6 +40,7 @@
 		addInputs = function (tempWord) {
 			var item,
 				input;
+			//using for.. of to iterate over selected nodelist and glue inputs to them
 			for (item of tempWord) {
 					//clear prefilled blanks
 				item.innerHTML = '';
@@ -48,9 +52,9 @@
 	//declare main functions
 	//Automatically fill blanks with predefined words
 	function fill() {
-		wordNodes(tempNoun, nouns, 5);
-		wordNodes(tempVerb, verbs, 4);
-		wordNodes(tempAdj, adjectives, 6);
+		wordNodes(tempNoun, nouns);
+		wordNodes(tempVerb, verbs);
+		wordNodes(tempAdj, adjectives);
 	}
 	//Let users fill the gaps
 	function userFill() {
